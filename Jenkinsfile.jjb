@@ -17,6 +17,7 @@ pipeline {
         stage('Build Packages') {
             steps {
                 sh '''
+                sudo mkdir -p /var/lib/apt/lists/partial
                 apt-get update -y
                 apt-get install -y python-pip
                 pip install jenkins-job-builder
