@@ -1,0 +1,31 @@
+- job-template:
+    id: jerry-test
+    name: '{name}'
+    project-type: pipeline
+    jenkins-file: Jenkinsfile
+    branch: "**/develope/*"
+    pipeline-scm:
+      scm:
+        - git:
+           url: https://github.com/jerrysuesue/jenkins
+           branches:
+             - '{branch}'
+      script-path: '{jenkins-file}'
+
+    properties:
+      - github:
+          url: "https://github.com/jerrysuesue/jenkins"
+    triggers:
+      - github
+
+- project:
+    name: jerry-jjb-test
+    jobs:
+      - 'jerry-test':
+          name: 'jtest-1'
+      - 'jerry-test':
+          name: 'jtest-2'
+      - 'jerry-test':
+          name: 'jtest-jjb'
+          jenkins-file: Jenkinsfile.jjb
+          branch: 'origin/master'
