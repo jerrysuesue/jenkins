@@ -22,9 +22,7 @@
     name: jerry-jjb-test
     jobs:
       - 'jerry-test':
-          name: 'jtest-1'
-      - 'jerry-test':
-          name: 'jtest-2'
+          name: 'jtest-1'      
       - 'jerry-test':
           name: 'jtest-jjb'
           jenkins-file: Jenkinsfile.jjb
